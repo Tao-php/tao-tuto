@@ -1,4 +1,5 @@
-tao-tuto
+Tao tuto
 ========
 
-Tutoriel Tao
+Tutoriel [Tao](https://github.com/forxer/tao) avec sources finales.
+
