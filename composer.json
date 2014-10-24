@@ -1,0 +1,10 @@
+{
+	"require" : {
+		"forxer/tao" : "~0.7"
+	},
+	"autoload" : {
+		"psr-4" : {
+			"Application\\" : "Application"
+		}
+	}
+}
