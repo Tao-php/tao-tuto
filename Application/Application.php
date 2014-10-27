@@ -21,5 +21,8 @@ class Application extends TaoApplication
 
 		$this['templating']->get('assets')->addPackage('img',
 			new PathPackage($this['app_url'] . $this['assets_url'] . '/img'));
+
+		$this['templating']->get('assets')->addPackage('components',
+			new PathPackage($this['app_url'] . $this['components_url']));
 	}
 }
