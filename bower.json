@@ -1,0 +1,7 @@
+{
+	"name": "tao-tuto",
+	"dependencies": {
+		"bootstrap" : "3.2.*",
+		"jquery" : "1.*"
+	}
+}
