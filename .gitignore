@@ -1,1 +1,16 @@
+
+# application cache
+/Application/Storage/Cache/**
+!/Application/Storage/Cache/*/.gitkeep
+
+# application logs
+/Application/Storage/Logs/**
+!/Application/Storage/Logs/.gitkeep
+
+# Bower components
+/web/Components/**
+!/web/Components/.gitkeep
+
+# Composer packages
 /vendor/
+/composer.lock
