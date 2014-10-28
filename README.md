@@ -1,5 +1,7 @@
 # Tutoriel Tao
 
+Ce tutoriel peut être consulté sur [GitBook](http://forxer.gitbooks.io/tutoriel-tao/content/).
+
 Ce tutoriel vise à montrer ce qu’il est possible de réaliser avec Tao, de présenter les principes utilisés et les bonnes pratiques mises en œuvre.
 
 Comme c’est un tutoriel et non une documentation, beaucoup de points différents seront abordés, mais jamais très en profondeur.
