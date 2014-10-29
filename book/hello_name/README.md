@@ -10,9 +10,9 @@ Reprenons notre fichier de définition de routes `/Application/Config/routes.yml
 
 ```yml
 hello:
-  path: /hello/{name}
-  defaults:
-    _controller: 'Application\Controllers\Hello::world'
+path: /hello/{name}
+defaults:
+	_controller: 'Application\Controllers\Hello::world'
 ```
 Nous venons de modifier la définition de la route en lui ajoutant un paramètre de substitution {name}
 
@@ -71,10 +71,10 @@ Mais pourquoi ce template est appelé ? Car nous essayons de joindre l’URL `/h
 
 ```yml
 hello:
-  path: /hello/{name}
-  defaults:
-    _controller: 'Application\Controllers\Hello::world'
-    name: world
+path: /hello/{name}
+defaults:
+	_controller: 'Application\Controllers\Hello::world'
+	name: world
 ```
 
 Lorsqu’on rafraichi la page, on retrouve bien notre page initiale.
@@ -90,7 +90,6 @@ Modifions donc le contrôleur de cette façon :
 namespace Application\Controllers;
 
 use Tao\Controller\Controller as BaseController;
-use Symfony\Component\HttpFoundation\Response;
 
 class Hello extends BaseController
 {

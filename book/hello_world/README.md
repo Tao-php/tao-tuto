@@ -31,9 +31,9 @@ Voici la définition d’une route basique :
 
 ```yml
 identifiant_de_la_route:
-  path: /url-de-la-route
-  defaults:
-    _controller: 'Controler::method'
+path: /url-de-la-route
+defaults:
+	_controller: 'Controler::method'
 ```
 
 Ici on définit que, si la requête HTTP pointe vers l’URL `/url-de-la-route`, alors la route `identifiant_de_la_route` correspondante indiquera qu’il faut invoquer le contrôleur `Controler::method`.
@@ -44,12 +44,12 @@ Voici par exemple la définition de la même route, mais de façon un peu plus c
 
 ```yml
 identifiant_de_la_route:
-  path: /url-de-la-route/{page}
-  defaults:
-    _controller: 'Controler::method'
-    page: 1
-  requirements:
-    page: \d+
+path: /url-de-la-route/{page}
+defaults:
+	_controller: 'Controler::method'
+	page: 1
+requirements:
+	page: \d+
 ```
 
 Ici on ajoute à notre route un paramètre de substitution `{page}` qui prendra par défaut la valeur `1` et devra être composé d’un ou de plusieurs caractères décimaux.
@@ -62,9 +62,9 @@ Nous allons donc créer un fichier `/Application/Config/routes.yml` et y défini
 
 ```yml
 hello:
-  path: /hello
-  defaults:
-    _controller: 'Application\Controllers\Hello::world'
+path: /hello
+defaults:
+	_controller: 'Application\Controllers\Hello::world'
 ```
 Si, dans votre navigateur, vous naviguez sur votre projet à l’adresse : `http://votre-projet/app.php` vous obtiendrez une page blanche.
 
@@ -125,7 +125,6 @@ Nous allons faire en sorte que notre contrôleur retourne le rendu d’un modèl
 namespace Application\Controllers;
 
 use Tao\Controller\Controller as BaseController;
-use Symfony\Component\HttpFoundation\Response;
 
 class Hello extends BaseController
 {
@@ -171,14 +170,14 @@ Pour se faire nous allons diviser notre templates en deux. Créons d’abord le 
 ```HTML
 <!doctype html>
 <html>
-    <head>
-        <title>
-            <?php $view['slots']->output('title', 'Titre par défaut') ?>
-        </title>
-    </head>
-    <body>
-        <?php $view['slots']->output('_content') ?>
-    </body>
+	<head>
+		<title>
+			<?php $view['slots']->output('title', 'Titre par défaut') ?>
+		</title>
+	</head>
+	<body>
+		<?php $view['slots']->output('_content') ?>
+	</body>
 </html>
 ```
 La variable `$view` est l’instance du moteur de templates lui-même.

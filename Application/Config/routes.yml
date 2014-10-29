@@ -1,0 +1,26 @@
+home:
+  path: /
+  defaults:
+    _controller: 'Home::show'
+
+hello:
+  path: /hello/{name}
+  defaults:
+    _controller: 'Hello::world'
+    name: world
+
+contact:
+  path: /contact
+  defaults:
+    _controller: 'Contact::form'
+  requirements:
+    _method:  GET
+
+contact_process:
+  path: /contact
+  defaults:
+    _controller: 'Contact::process'
+  requirements:
+    _method:  POST
+
+    
