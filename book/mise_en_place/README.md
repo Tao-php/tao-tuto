@@ -17,12 +17,12 @@ La première chose à faire, est évidement de mettre en place Tao dans notre pr
 ```json
 {
 	"require": {
-		 "forxer/tao": "0.7"
+		 "forxer/tao": "0.8"
 	 }
 }
 ```
 
-Ce fichier indique que le nouveau projet exige pour fonctionner la bibliothèque `forxer/tao` en version 0.7
+Ce fichier indique que le nouveau projet exige pour fonctionner la bibliothèque `forxer/tao` en version 0.8
 Autrement dit "Tao est une dépendance de notre projet" ; ou sa réciproque : "notre projet dépend de Tao".
 
 Vous pouvez indiquer beaucoup d’autres choses à propos de votre projet dans le fichier `composer.json` comme son nom, son auteur, etc.
@@ -169,7 +169,7 @@ Comme nous avons définit l’espace de nom `Application` pour le répertoire `/
 ```json
 {
 	"require": {
-		"forxer/tao": "0.7"
+		"forxer/tao": "0.8"
 	},
 
 	"autoload" : {
