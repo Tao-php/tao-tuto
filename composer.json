@@ -1,8 +1,7 @@
 {
 	"require" : {
-		"forxer/tao" : "0.7"
+		"forxer/tao" : "0.8"
 	},
-
 	"autoload" : {
 		"psr-4" : {
 			"Application\\" : "Application"
