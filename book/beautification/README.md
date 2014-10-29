@@ -37,7 +37,7 @@ class Application extends TaoApplication
 		$this['session']->start();
 
 		$this['templating']->get('assets')->addPackage('assets',
-		    new PathPackage('/Assets/'));
+			new PathPackage('/Assets/'));
 	}
 }
 ```
@@ -68,7 +68,7 @@ class Application extends TaoApplication
 		$this['session']->start();
 
 		$this['templating']->get('assets')->addPackage('assets',
-		    new PathPackage($this['app_url'] . $this['assets_url']));
+			new PathPackage($this['app_url'] . $this['assets_url']));
 	}
 }
 ```
@@ -93,13 +93,13 @@ class Application extends TaoApplication
 		$this['session']->start();
 
 		$this['templating']->get('assets')->addPackage('css',
-		    new PathPackage($this['app_url'] . $this['assets_url'] . '/css'));
+			new PathPackage($this['app_url'] . $this['assets_url'] . '/css'));
 
 		$this['templating']->get('assets')->addPackage('js',
-		    new PathPackage($this['app_url'] . $this['assets_url'] . '/js'));
+			new PathPackage($this['app_url'] . $this['assets_url'] . '/js'));
 
 		$this['templating']->get('assets')->addPackage('img',
-		    new PathPackage($this['app_url'] . $this['assets_url'] . '/img'));
+			new PathPackage($this['app_url'] . $this['assets_url'] . '/img'));
 	}
 }
 ```
@@ -171,7 +171,7 @@ Nous allons donc commencer par créer un fichier `bower.json` dans lequel nous a
 	"dependencies": {
 		"bootstrap" : "3.2.*",
 		"jquery" : "1.*"
-	 }
+	}
 }
 ```
 
@@ -195,7 +195,7 @@ Il existe de nombreux paramètres de configuration de Bower.
 
 Il est maintenant temps d’installer les dépendances grâce à la commande suivante :
 
-```bat
+```dos
 bower install
 ```
 
@@ -220,13 +220,13 @@ Pour la prise en charge des éléments HTML5 et les media queries par Internet E
 		"html5shiv" : "3.7.*",
 		"jquery" : "1.*",
 		"respond" : "1.4.*"
-	 }
+	}
 }
 ```
 
 Nous pouvons ensuite lancer la commande suivante pour mettre à jour nos dépendances :
 
-```bat
+```dos
 bower update
 ```
 
@@ -308,7 +308,6 @@ Ici nous avons ajouté le rendu de la vue `Common/Navbar` et nous avons encadré
 Créons le fichier `/Application/Views/Common/Navbar.php` :
 
 ```html
-
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
@@ -329,7 +328,6 @@ Créons le fichier `/Application/Views/Common/Navbar.php` :
 		</div>
 	</div>
 </div>
-
 ```
 
 Ici nous avons créé le markup d'une [navbar bootstrap](http://getbootstrap.com/components/#navbar) et ajouté quelques liens. Nous utilisons la méthode `$view['router']->generate()` pour générer les URL comme nous l'avions déjà vu. La particularité c'est que que nous réalisons des tests sur les identifiants des routes pour rendre actif tel ou tel autre lien.
@@ -404,11 +402,12 @@ Modification du fichier `bower.json` :
 
 Mise à jour des packages :
 
-```bat
+```dos
 bower update
 ```
 
 Modification de `/Application/Views/Layout.php` en ajoutant ce qui suit là où il faut :
+
 ```html
 <link rel="stylesheet" type="text/css" href="<?php echo $view['assets']->getUrl('fontawesome/css/font-awesome.min.css', 'components') ?>">
 ```

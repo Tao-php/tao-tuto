@@ -66,6 +66,7 @@ path: /hello
 defaults:
 	_controller: 'Application\Controllers\Hello::world'
 ```
+
 Si, dans votre navigateur, vous naviguez sur votre projet à l’adresse : `http://votre-projet/app.php` vous obtiendrez une page blanche.
 
 Maintenant si vous allez à l’adresse `http://votre-projet/app.php/hello` vous obtiendrez un message d’erreur :

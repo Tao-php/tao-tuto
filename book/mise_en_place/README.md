@@ -31,7 +31,7 @@ Vous pouvez indiquer beaucoup d’autres choses à propos de votre projet dans l
 
 Ensuite il faut lancer la ligne de commande suivante pour installer les dépendances :
 
-```bat
+```dos
 composer install
 ```
 
@@ -115,7 +115,6 @@ class Application extends TaoApplication
 		parent::__construct($loader, $config, __DIR__, $classMap);
 	}
 }
-
 ```
 
 Ce fichier ne fait pas grand chose pour le moment. Il se contente essentiellement d’étendre la classe `Tao\Application` et d’appeler son constructeur en lui passant quelques paramètres.
@@ -153,8 +152,8 @@ $app = new Application\Application($loader);
 
 # Exécution de l'application
 $app->run();
-
 ```
+
 Le contenu de ce fichier est assez explicite :
 - on charge l’autoload de composer
 - on initialise l’application
@@ -179,6 +178,7 @@ Comme nous avons définit l’espace de nom `Application` pour le répertoire `/
 	}
 }
 ```
+
 Nous avons donc indiqué que l’espace de nom `Application\` sera physiquement présent dans le répertoire "/Application" (qui se trouve au même niveau que `/vendor`)
 
 Si nous avions définit l’espace de nom `Toto\` dans le répertoire `/src/Toto` nous aurions mis dans notre `composer.json` ceci :
@@ -199,7 +199,7 @@ Ainsi une classe `Application\Foo\Bar` devra se trouver dans le fichier `/Applic
 
 Maintenant, il faut reconstruire l’autoload de composer soit en relançant la commande d’installation soit en utilisant la commande dédiée :
 
-```bat
+```dos
 composer dump-autoload
 ```
 

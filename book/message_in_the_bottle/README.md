@@ -91,6 +91,7 @@ Nous allons ajouter dans le fichier `/Application/Views/Layout.php` le code suiv
 ```php
 <?php echo $view->render('Common/messages') ?>
 ```
+
 Et créer le fichier `/Application/Views/Common/Messages.php` correspondant :
 
 ```php

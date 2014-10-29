@@ -7,6 +7,7 @@ Apportons quelques améliorations bienvenues à notre projet.
 Avoir /app.php dans l’URL n’est pas souhaité, utilisons la ré-écriture d’URL d’Apache pour cela. Évidement si vous utilisez Apache, sinon reportez vous à la documentation de votre serveur.
 
 Vous allez créer un fichier `/web/.htaccess ` dans lequel vous allez mettre :
+
 ```apache
 <IfModule mod_rewrite.c>
 RewriteEngine on
@@ -119,7 +120,6 @@ Enfin, créez un fichier vue `Application/Views/Home.php`
 <?php $view->extend('Layout') ?>
 
 <h1>Bienvenue !</h1>
-
 ```
 
 Voilà, maintenant, au lieu d’une erreur 404 nous avons une page d’accueil.
@@ -189,7 +189,6 @@ Par exemple, modifier le de cette façon :
 </div>
 
 <?php d($view['modifier']) ?>
-
 ```
 
 Kint fournis la fonction `d()` pour dumper le contenu d'une variable. Si vous rafraichissez la page, vous verrez des informations sur le "helper de templates" `modifier`

@@ -32,7 +32,6 @@ class Contact extends BaseController
         return $this->render('Contact');
     }
 }
-
 ```
 
 Ici vraiment rien de particulier, le minimum syndical.
@@ -56,7 +55,6 @@ Enfin, créez un fichier vue `Application/Views/Contact.php` pour afficher un fo
 
 	<p><input type="submit" class="submit" value="envoyer"></p>
 </form>
-
 ```
 
 A ce stade si vous naviguez à l’adresse `http://votre-projet/contact` la page doit afficher le formulaire.
@@ -219,8 +217,8 @@ class Contact extends BaseController
 		return $this->redirectToRoute('contact');
 	}
 }
-
 ```
+
 Je vous laisse analyser le code, c’est assez simple, rien de particulier par rapport à Tao, ici ce n’est que de l’algorithmique.
 
 Pour finir, nous allons modifier la vue de cette façon :
@@ -242,7 +240,6 @@ Pour finir, nous allons modifier la vue de cette façon :
 
 	<p><input type="submit" class="submit" value="envoyer"></p>
 </form>
-
 ```
 
 ## Conclusion

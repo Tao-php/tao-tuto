@@ -14,6 +14,7 @@ path: /hello/{name}
 defaults:
 	_controller: 'Application\Controllers\Hello::world'
 ```
+
 Nous venons de modifier la définition de la route en lui ajoutant un paramètre de substitution {name}
 
 ## Parenthèse débogage
@@ -103,6 +104,7 @@ class Hello extends BaseController
 	}
 }
 ```
+
 On récupère la valeur de `{name}` depuis la requête HTTP et on la passe au template.
 
 `$this->app['request']` est une instance de `Symfony\Component\HttpFoundation\Request` qui est une classe du composant HttpFoundation de Symfony2.
@@ -124,6 +126,7 @@ Ainsi, il nous reste à afficher `$name_from_controller` dans le template :
 
 <p>Hello <?php echo $view->e($name_from_controller) ?>!</p>
 ```
+
 ![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/emblem-important.png) La variable est échappée à l’aide de la fonction `$view->e()` Ceci pour des raisons de sécurité car la valeur de cette variable est une entrée utilisateur.
 **Pensez à toujours échapper les données envoyées par les utilisateurs.**
 
