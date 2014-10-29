@@ -116,15 +116,15 @@ Les données du formulaire sont récupérées grâce au service 'request'.
 
 Cet objet permet d’accéder dans un style orienté objet aux traditionnels super-globales `$_GET`, `$_POST`, `$_SERVER`, etc.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Documentation du composant HttpFoundation](http://symfony.com/fr/doc/current/components/http_foundation/introduction.html)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/text-html.png) [Documentation du composant HttpFoundation](http://symfony.com/fr/doc/current/components/http_foundation/introduction.html)
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Remarquez comment il est possible de donner une valeur par défaut à `$subject` en passant un second argument à `$this->app['request']->request->get()`
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) Remarquez comment il est possible de donner une valeur par défaut à `$subject` en passant un second argument à `$this->app['request']->request->get()`
 
 Ensuite on imagine qu'on envoient l’email pour finalement, enregistrer un message de confirmation et rediriger vers le formulaire.
 
 Évidement, dans cette implémentation, rien ne se passe vraiment à part rediriger vers le formulaire et afficher un message.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) A noter l’utilisation de la méthode `redirectToRoute()` du contrôleur de base pour réaliser une redirection vers une route donnée.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) A noter l’utilisation de la méthode `redirectToRoute()` du contrôleur de base pour réaliser une redirection vers une route donnée.
 
 Penchons-nous maintenant sur la validation des données.
 

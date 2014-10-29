@@ -11,11 +11,11 @@ Cependant, dans la mesure du possible, des liens vers de plus amples information
 _En ce qui concerne ces liens vers de la documentation complémentaire :_
 >Nous vous conseillons de ne pas cliquer dessus à la première lecture. Suivez l’intégralité du tutoriel une première fois sans suivre ces liens, puis lors d’une seconde lecture, approfondissez vos connaissances en cliquant dessus.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) sera l’icône pour indiquer ces liens vers de la documentation complémentaire
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/text-html.png) sera l’icône pour indiquer ces liens vers de la documentation complémentaire
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) sera l’icône pour indiquer un point important du tutoriel qu’il faudra bien retenir
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/emblem-important.png) sera l’icône pour indiquer un point important du tutoriel qu’il faudra bien retenir
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) sera l’icône pour indiquer une astuce, un point de connaissance utile
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) sera l’icône pour indiquer une astuce, un point de connaissance utile
 
 Pour démarrer ce tutoriel vous devez avoir à disposition sur votre machine :
 

@@ -14,7 +14,7 @@ Vous avez à votre disposition 3 sortes de piles de messages :
 * `$app['flashMessages']` les messages flash : ces messages ne seront disponibles que durant l’affichage de la prochaine page. Ces messages vont expirer de manière automatique suivant s’ils ont été récupérés ou non.
 * `$app['persistentMessages']` les messages persistants : ces messages vont rester dans la session jusqu’à ce qu'ils soient explicitement récupérés ou supprimés.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) Les messages flash et persistants sont stockés en session, il faut donc explicitement démarrer les sessions PHP à l'aide du service dédié.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/emblem-important.png) Les messages flash et persistants sont stockés en session, il faut donc explicitement démarrer les sessions PHP à l'aide du service dédié.
 
 Généralement on fait ça dans le constructeur de l'application `/Application/Application.php` :
 

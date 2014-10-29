@@ -19,13 +19,13 @@ $app = new Application\Application($loader, ['debug' => true]);
 
 En fait, ici nous avons écrasé le paramètre de configuration par défaut. En effet, Tao définit un ensemble de paramètres de configurations par défaut qui lui permettent de fonctionner correctement.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) Ces paramètres de base se trouvent dans le fichier `vendor/forxer/tao/src/Tao/Configuration.php`.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/emblem-important.png) Ces paramètres de base se trouvent dans le fichier `vendor/forxer/tao/src/Tao/Configuration.php`.
 
 Ouvrez donc ce fichier `vendor/forxer/tao/src/Tao/Configuration.php` pour voir quels sont les paramètres de configuration de base dans Tao, paramètres que vous pouvez modifier dans votre propre configuration.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) Ne modifiez jamais ce fichier de configuration par défaut, à chaque mise à jour vous perdriez vos modifications, utilisez les techniques décrites ci-dessous.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/emblem-important.png) Ne modifiez jamais ce fichier de configuration par défaut, à chaque mise à jour vous perdriez vos modifications, utilisez les techniques décrites ci-dessous.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Évidement, vous pouvez définir vos propres paramètres de configuration en plus de ceux définit par défaut.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) Évidement, vous pouvez définir vos propres paramètres de configuration en plus de ceux définit par défaut.
 
 ## Un fichier de configuration
 
