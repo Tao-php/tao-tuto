@@ -39,7 +39,7 @@ Ici vraiment rien de particulier, le minimum syndical.
 
 Enfin, créez un fichier vue `Application/Views/Contact.php` pour afficher un formulaire
 
-```html+php
+```html
 <?php $view->extend('Layout') ?>
 
 <?php $view['slots']->set('title', 'Contact') ?>
@@ -80,7 +80,7 @@ Cette nouvelle route a le même chemin que la précédente (`/contact`) mais ave
 
 On va utiliser cette nouvelle route comme destination du formulaire en modifiant la vue de cette façon :
 
-```html+php
+```html
 ...
 <form action="<?php echo $view['router']->generate('contact_process') ?>" method="POST">
 ...
@@ -225,7 +225,7 @@ Je vous laisse analyser le code, c’est assez simple, rien de particulier par r
 
 Pour finir, nous allons modifier la vue de cette façon :
 
-```html+php
+```html
 <?php $view->extend('Layout') ?>
 
 <?php $view['slots']->set('title', 'Contact') ?>

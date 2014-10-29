@@ -115,7 +115,7 @@ class Home extends BaseController
 
 Enfin, créez un fichier vue `Application/Views/Home.php`
 
-```html+php
+```html
 <?php $view->extend('Layout') ?>
 
 <h1>Bienvenue !</h1>
@@ -134,7 +134,7 @@ Nous allons afficher ces informations en bas de nos pages, de toutes nos pages. 
 
 Modifiez donc dans le fichier `/Application/Views/Layout.php` de la façon suivante :
 
-```html+php
+```html
 <!doctype html>
 <html>
 	<head>
@@ -165,7 +165,7 @@ Cela est particulièrement utile pour partager un template entre plusieurs autre
 
 Maintenant nous allons donc créer un fichier `/Application/Views/Common/DebugInfos.php` :
 
-```html+php
+```html
 <div class="debug">
 	<?php echo $view['modifier']->number($app->utilities->getExecutionTime(), 4) ?> s -
 	<?php echo $app->utilities->getMemoryUsage() ?>
@@ -182,7 +182,7 @@ Souvent en phase de développement, pour voir le contenu d’une variable on uti
 
 Par exemple, modifier le de cette façon :
 
-```html+php
+```html
 <div class="debug">
 	<?php echo $view['modifier']->number($app->utilities->getExecutionTime(), 4) ?> s -
 	<?php echo $app->utilities->getMemoryUsage() ?>

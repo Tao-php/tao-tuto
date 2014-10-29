@@ -13,7 +13,7 @@ En général, les assets sont les fichiers CSS, Javascript et images ; d’où l
 
 L’objectif principal du "Assets Helper" est de rendre votre application plus portable en générant les chemins des assets :
 
-```html+php
+```html
 <link href="<?php echo $view['assets']->getUrl('css/style.css') ?>" rel="stylesheet">
 
 <img src="<?php echo $view['assets']->getUrl('images/logo.png') ?>">
@@ -106,7 +106,7 @@ class Application extends TaoApplication
 
 Maintenant, nous allons créer deux fichiers `/web/Assets/css/app.css` et  `/web/Assets/js/app.js`. Et les appeler dans le fichier `/Application/Views/Layout.php` :
 
-```html+php
+```html
 <!doctype html>
 <html>
 	<head>
@@ -236,7 +236,7 @@ Pour illustrer l'utilisation des composants Bower, nous allons inclure Bootstrap
 
 Prenons modèle sur le [Template de base de Bootstrap](http://getbootstrap.com/getting-started/#template) pour modifier notre fichier `/Application/Views/Layout.php` :
 
-```html+php
+```html
 <!doctype html>
 <html>
 	<head>
@@ -279,7 +279,7 @@ Maintenant que les outils sont en place, jouons un peu avec Bootstrap pour rendr
 
 Nous allons ajouter un menu de navigation à notre `/Application/Views/Layout.php` :
 
-```html+php
+```html
 <!doctype html>
 <html>
 	<head>
@@ -307,7 +307,7 @@ Ici nous avons ajouté le rendu de la vue `Common/Navbar` et nous avons encadré
 
 Créons le fichier `/Application/Views/Common/Navbar.php` :
 
-```html+php
+```html
 
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container">
@@ -336,7 +336,7 @@ Ici nous avons créé le markup d'une [navbar bootstrap](http://getbootstrap.com
 
 Maintenant, et pour finir nous allons modifier le templates du formulaire de contact pour utiliser bootstrap ; modifier le fichier `/Application/View/contact.php` de la façon suivante :
 
-```html+php
+```html
 <?php $view->extend('Layout') ?>
 
 <?php $view['slots']->set('title', 'Contact') ?>
@@ -409,13 +409,13 @@ bower update
 ```
 
 Modification de `/Application/Views/Layout.php` en ajoutant ce qui suit là où il faut :
-```html+php
+```html
 <link rel="stylesheet" type="text/css" href="<?php echo $view['assets']->getUrl('fontawesome/css/font-awesome.min.css', 'components') ?>">
 ```
 
 Ensuite nous ajoutons les icônes à `/Application/Views/Common/Navbar.php` comme indiqué dans les exemples de [Font Awesome](http://fontawesome.io/examples/)
 
-```html+php
+```html
 
 <div class="navbar navbar-inverse" role="navigation">
 	<div class="container">

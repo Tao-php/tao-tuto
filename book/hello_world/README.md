@@ -188,7 +188,7 @@ Aussi, nous utilisons ici 2 "slots" : 'title' et '_content'
 
 Nous allons modifier notre fichier `Application/Views/Hello.php` de la façon suivante :
 
-```HTML+PHP
+```html
 <?php $view->extend('Layout') ?>
 
 <?php $view['slots']->set('title', 'Hello') ?>

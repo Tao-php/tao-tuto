@@ -117,7 +117,7 @@ Cette méthode reçoit toujours en premier argument le nom du template et on ajo
 
 Ainsi, il nous reste à afficher `$name_from_controller` dans le template :
 
-```html+php
+```html
 <?php $view->extend('Layout') ?>
 
 <?php $view['slots']->set('title', 'Hello') ?>
