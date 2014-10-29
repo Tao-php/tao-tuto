@@ -19,7 +19,7 @@ RewriteRule ^(.*)$ app.php?q=$1 [L,QSA]
 C’est la ré-écriture d’URL pour supprimer le nom du fichier front-controller dans sa plus simple expression.
  Elle fonctionnera très bien dans la majorité des cas.
 
-:point_right: Personnellement j’aime utiliser le [.htaccess de Symfony 2](https://raw.githubusercontent.com/symfony/symfony-standard/master/web/.htaccess)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Personnellement j’aime utiliser le [.htaccess de Symfony 2](https://raw.githubusercontent.com/symfony/symfony-standard/master/web/.htaccess)
 
 ## Espace de noms des contrôleurs
 
@@ -83,7 +83,7 @@ class Hello extends BaseController
 
 Cela simplifie la déclaration de nos futurs contrôleurs.
 
-:point_right: Cette nouvelle classe BaseController sera un endroit idéal pour déclarer des méthodes communes à l’ensemble des contrôleurs de notre application.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Cette nouvelle classe BaseController sera un endroit idéal pour déclarer des méthodes communes à l’ensemble des contrôleurs de notre application.
 
 ## Home page
 
@@ -124,7 +124,7 @@ Enfin, créez un fichier vue `Application/Views/Home.php`
 
 Voilà, maintenant, au lieu d’une erreur 404 nous avons une page d’accueil.
 
-:point_right: Remarquez ci-dessus comme c’est simple finalement de créer une page avec Tao : une route, un contrôleur et une vue ; trois fichiers bien rangés et quelques lignes de code explicites.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Remarquez ci-dessus comme c’est simple finalement de créer une page avec Tao : une route, un contrôleur et une vue ; trois fichiers bien rangés et quelques lignes de code explicites.
 
 ## Debug infos
 
@@ -161,7 +161,7 @@ On peux parler d’inclusion de template.
 
 Cela est particulièrement utile pour partager un template entre plusieurs autres templates, pour mutualiser le rendu d’un template.
 
-:point_right: Bon, ce n’est pas vraiment utile dans le cas présent. En effet, si nous affichons le template `Common/DebugInfos` dans le `Layout` il y a très peu de chances pour que nous l’affichions dans un autre template. Le côté mutualisation perd de son intérêt dans ce cas de figure. Pour des questions de performance et de logique, nous aurions pus/dus mettre directement le contenu du template `DebugInfos` dans le `Layout`. Mais je voulais introduire cette notion d'inclusion de templates. Et puis j'aime avoir un fichier `Layout` le plus clair et léger possible, avec le minimum de PHP possible, or le template `DebugInfos` va réaliser quelques traitements et je ne souhaitais pas les voir dans le `Layout`.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Bon, ce n’est pas vraiment utile dans le cas présent. En effet, si nous affichons le template `Common/DebugInfos` dans le `Layout` il y a très peu de chances pour que nous l’affichions dans un autre template. Le côté mutualisation perd de son intérêt dans ce cas de figure. Pour des questions de performance et de logique, nous aurions pus/dus mettre directement le contenu du template `DebugInfos` dans le `Layout`. Mais je voulais introduire cette notion d'inclusion de templates. Et puis j'aime avoir un fichier `Layout` le plus clair et léger possible, avec le minimum de PHP possible, or le template `DebugInfos` va réaliser quelques traitements et je ne souhaitais pas les voir dans le `Layout`.
 
 Maintenant nous allons donc créer un fichier `/Application/Views/Common/DebugInfos.php` :
 
@@ -194,6 +194,6 @@ Par exemple, modifier le de cette façon :
 
 Kint fournis la fonction `d()` pour dumper le contenu d'une variable. Si vous rafraichissez la page, vous verrez des informations sur le "helper de templates" `modifier`
 
-:book: [Documentation de Kint](http://raveren.github.io/kint/)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Documentation de Kint](http://raveren.github.io/kint/)
 
 Familiarisez-vous avec cet outil, il peut vous rendre de grands services.

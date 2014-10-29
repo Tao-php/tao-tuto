@@ -20,11 +20,11 @@ Nous venons de modifier la définition de la route en lui ajoutant un paramètre
 
 Si nous affichons la page `http://votre-projet/app.php/hello` dans le navigateur... il ne se passe rien : nous avons toujours notre "Hello World!" qui s’affiche dans une page HTML. Rien a changé.
 
-:exclamation: C’est normal car les résolutions de routes sont mises en cache afin de limiter l’impact du composant de routage sur les performances.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) C’est normal car les résolutions de routes sont mises en cache afin de limiter l’impact du composant de routage sur les performances.
 
 Il suffit donc de supprimer les fichiers cache présents dans `/Application/Storage/Cache/Router`. Cela fait et près rafraichissement de la page, nous avons maintenant une belle page blanche (ce qui signifie que quelque chose à bien changé dans le comportement de l’application).
 
-:point_right: Pour ne pas avoir à supprimer le cache manuellement à chaque modification des routes, nous allons passer en "mode debug". Dans ce mode les fichiers cache seront régénérés dès que leurs sources seront modifiées contrairement au mode par défaut où ils ne sont générés que s’ils sont absents.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Pour ne pas avoir à supprimer le cache manuellement à chaque modification des routes, nous allons passer en "mode debug". Dans ce mode les fichiers cache seront régénérés dès que leurs sources seront modifiées contrairement au mode par défaut où ils ne sont générés que s’ils sont absents.
 
 Pour passer en "mode debug" il faut modifier le fichier front-controller `/web/app.php` afin de passer en second argument un tableau de configuration au constructeur de l’application de cette façon :
 
@@ -37,7 +37,7 @@ $app = new Application\Application($loader, ['debug' => true]);
 //...
 ```
 
-:point_right: Remarquez la notation PHP 5.4 du tableau de configuration : `['debug' => true]` qui aurait habituellement été `array('debug' => true)` ; cela apporte du confort au développeur et une certaine consistance avec d’autres langages, l’ancienne notation fonctionnant évidement toujours de la même façon.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Remarquez la notation PHP 5.4 du tableau de configuration : `['debug' => true]` qui aurait habituellement été `array('debug' => true)` ; cela apporte du confort au développeur et une certaine consistance avec d’autres langages, l’ancienne notation fonctionnant évidement toujours de la même façon.
 
 Maintenant, si vous rafraichissez la page, en lieu et place de la page blanche, vous obtenez un magnifique message d’erreur détaillé.
 
@@ -45,7 +45,7 @@ Prenez le temps d’étudier cette interface d’affichage des erreurs. Cela vou
 
 Rapidement, à gauche vous avez la "backtrace" interactive, à droite le message d’erreur, puis le focus du fichier où s’est produite l’erreur et en dessous des informations sur l’environnement de la requête.
 
-:point_right: Lorsque le mode debug n’est pas activé, les erreurs PHP sont "loguées" dans `/Application/Storage/Logs/php_errors.log`
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) Lorsque le mode debug n’est pas activé, les erreurs PHP sont "loguées" dans `/Application/Storage/Logs/php_errors.log`
 
 ## Retour aux affaires
 
@@ -110,7 +110,7 @@ On récupère la valeur de `{name}` depuis la requête HTTP et on la passe au te
 
 Cet objet permet d’accéder dans un style orienté objet aux traditionnels super-globales `$_GET`, `$_POST`, `$_SERVER`, etc.
 
-:book: [Documentation du composant HttpFoundation](http://symfony.com/fr/doc/current/components/http_foundation/introduction.html)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Documentation du composant HttpFoundation](http://symfony.com/fr/doc/current/components/http_foundation/introduction.html)
 
 Après avoir récupéré la valeur de `{name}` on la passe au template à travers l’appel de la méthode `render()`.
 
@@ -125,7 +125,7 @@ Ainsi, il nous reste à afficher `$name_from_controller` dans le template :
 
 <p>Hello <?php echo $view->e($name_from_controller) ?>!</p>
 ```
-:exclamation: La variable est échappée à l’aide de la fonction `$view->e()` Ceci pour des raisons de sécurité car la valeur de cette variable est une entrée utilisateur.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) La variable est échappée à l’aide de la fonction `$view->e()` Ceci pour des raisons de sécurité car la valeur de cette variable est une entrée utilisateur.
 **Pensez à toujours échapper les données envoyées par les utilisateurs.**
 
 Maintenant si nous naviguons à l’adresse `http://votre-projet/app.php/hello/toto` notre page affiche bien "Hello toto!" ; et si nous naviguons à l’adresse `http://votre-projet/app.php/hello` notre page affiche "Hello world!" car c’est la valeur par défaut.

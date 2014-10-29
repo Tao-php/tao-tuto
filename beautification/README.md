@@ -6,7 +6,7 @@ Dans cette partie nous allons nous pencher sur la question de la mise en page et
 
 Nous avons déjà vu que le composant Templating fournissait différents Helpers. Pour inclure dans les templates les fichiers qui se trouvent dans le répertoire `web/Assets` nous allons utiliser le "Assets Helper".
 
-:exclamation: Selon wikipédia :
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) Selon wikipédia :
 >Un Asset est défini comme une ressource basique devant être affichée dans un navigateur web.
 
 En général, les assets sont les fichiers CSS, Javascript et images ; d’où l’arborescence mise en place dans la première partie.
@@ -44,7 +44,7 @@ class Application extends TaoApplication
 
 Ici on as définit un "package d’assets" nommé "assets" pour le répertoire "/Assets/".
 
-:point_right: N’oubliez pas d’ajouter la ligne `use Symfony\Component\Templating\Asset\PathPackage;`
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) N’oubliez pas d’ajouter la ligne `use Symfony\Component\Templating\Asset\PathPackage;`
 
 Tao fournis deux variables de configuration par défaut :
 * `'app_url' => '/'` : représente le chemin relatif de l'application depuis le nom de domaine
@@ -161,7 +161,7 @@ Bower est un gestionnaire de packages pour le développement web comme Composer 
 
 En fait ce chapitre n’est absolument pas lié à Tao, mais c’est une bonne pratique qui se démocratise et pour laquelle il est intéressant de voir comment la mettre en œuvre dans un contexte Tao.
 
-:book: [Site web de Bower](http://bower.io/)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Site web de Bower](http://bower.io/)
 
 Nous allons donc commencer par créer un fichier `bower.json` dans lequel nous allons lister les packages que nous souhaitons utiliser dans notre projet.
 
@@ -179,7 +179,7 @@ Ce fichier indique que le projet "tao-tuto" exige les bibliothèques Bootstrap e
 
 Vous pouvez indiquer beaucoup d’autres choses à propos de votre projet dans le fichier bower.json comme son nom, sa description, etc.
 
-:book: [Spécification bower.json](https://github.com/bower/bower.json-spec)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Spécification bower.json](https://github.com/bower/bower.json-spec)
 
 Avant d’installer ces dépendances, nous allons configurer notre projet pour que les packages soient installés dans le répertoire `/web/Components` ; pour cela nous allons créer un fichier `.bowerrc` dans lequel nous mettons :
 
@@ -191,7 +191,7 @@ Avant d’installer ces dépendances, nous allons configurer notre projet pour q
 
 Il existe de nombreux paramètres de configuration de Bower.
 
-:book: [Configuration de Bower](http://bower.io/docs/config/)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Configuration de Bower](http://bower.io/docs/config/)
 
 Il est maintenant temps d’installer les dépendances grâce à la commande suivante :
 
@@ -379,9 +379,9 @@ Ici nous avons utilisé le markup de bootstrap et saupoudré de HTML5. Bon, voil
 
 Bootstrap fournis une très grande quantité de classes CSS, de composants et de plugins JS. A vous de piocher dedans selon vos besoins.
 
-:book: [Bootstrap CSS](http://getbootstrap.com/css/)
-:book: [Bootstrap Components](http://getbootstrap.com/components/)
-:book: [Bootstrap Javascript](http://getbootstrap.com/javascript/)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Bootstrap CSS](http://getbootstrap.com/css/)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Bootstrap Components](http://getbootstrap.com/components/)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Bootstrap Javascript](http://getbootstrap.com/javascript/)
 
 ## Font Awesome
 

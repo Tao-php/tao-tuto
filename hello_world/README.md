@@ -25,7 +25,7 @@ Le `composer.json` de Tao exige la dépendance `symfony/routing` ; nous allons d
 
 Notre application va définir une collection de routes. Cette collection sera définie dans le fichier `/Application/Config/routes.yml` au format YAML.
 
-:book: [Le format YAML](http://symfony.com/fr/doc/current/components/yaml/yaml_format.html)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Le format YAML](http://symfony.com/fr/doc/current/components/yaml/yaml_format.html)
 
 Voici la définition d’une route basique :
 
@@ -54,9 +54,9 @@ identifiant_de_la_route:
 
 Ici on ajoute à notre route un paramètre de substitution `{page}` qui prendra par défaut la valeur `1` et devra être composé d’un ou de plusieurs caractères décimaux.
 
-:point_right: C’est le modèle de définition de route généralement utilisé pour la pagination de liste d’éléments.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/dialog-information.png) C’est le modèle de définition de route généralement utilisé pour la pagination de liste d’éléments.
 
-:book: [Définition des routes avec le composant de routage de Symfony2](http://symfony.com/fr/doc/current/components/routing/introduction.html#definition-des-routes)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Définition des routes avec le composant de routage de Symfony2](http://symfony.com/fr/doc/current/components/routing/introduction.html#definition-des-routes)
 
 Nous allons donc créer un fichier `/Application/Config/routes.yml` et y définir une route de la façon suivante :
 
@@ -98,13 +98,13 @@ class Hello extends BaseController
 
 Maintenant si vous allez à l’adresse `http://votre-projet/app.php/hello` vous aurez bien le message "Hello world!" d’affiché.
 
-:exclamation: Cette classe étend et **doit étendre** le contrôleur de base de Tao.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) Cette classe étend et **doit étendre** le contrôleur de base de Tao.
 
-:exclamation: La méthode du contrôleur `world()` appelée par le routeur, retourne et **doit retourner** une réponse HTTP.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/emblem-important.png) La méthode du contrôleur `world()` appelée par le routeur, retourne et **doit retourner** une réponse HTTP.
 
 La réponse HTTP est une instance de `Symfony\Component\HttpFoundation\Response` (ou dérivée) qui est une classe du composant HttpFoundation de Symfony2.
 
-:book: [Documentation du composant HttpFoundation](http://symfony.com/fr/doc/current/components/http_foundation/introduction.html)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Documentation du composant HttpFoundation](http://symfony.com/fr/doc/current/components/http_foundation/introduction.html)
 
 Le fait d’étendre le contrôleur de base de Tao permet d’hériter de ses méthodes, notamment :
 
@@ -162,7 +162,7 @@ La méthode `world()` du contrôleur `Hello` retourne `$this->render('Hello');` 
 
 Le moteur de template PHP utilisé est le composant Templating de Symfony2.
 
-:book: [Documentation composant Templating Symfony2](http://symfony.com/doc/current/components/templating/index.html)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Documentation composant Templating Symfony2](http://symfony.com/doc/current/components/templating/index.html)
 
 Aujourd’hui nous n’avons qu’un seul fichier. Mais demain nous en aurons plusieurs. Il sera alors très intéressant de mutualiser les parties communes de notre template.
 
@@ -185,7 +185,7 @@ La variable `$view` est l’instance du moteur de templates lui-même.
 
 Aussi, nous utilisons ici 2 "slots" : 'title' et '_content'
 
-:book: [Documentation sur le Slots Helper](http://symfony.com/doc/current/components/templating/helpers/slotshelper.html)
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/assets/text-html.png) [Documentation sur le Slots Helper](http://symfony.com/doc/current/components/templating/helpers/slotshelper.html)
 
 Nous allons modifier notre fichier `Application/Views/Hello.php` de la façon suivante :
 
