@@ -9,5 +9,5 @@
 * [Message in the bottle](book/message_in_the_bottle/README.md)
 * [Contact](book/contact/README.md)
 * [Beautification](book/beautification/README.md)
-* [Injection de Dépendances](book/injection_de_dependances/README.md)
+* [Conteneur d'injection de dépendances](book/conteneur_dinjection_de_dependances/README.md)
 
