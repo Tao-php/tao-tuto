@@ -1,28 +1,23 @@
 # Tutoriel Tao
 
+Aujourd'hui nous pouvons utiliser dans nos projets une quantité pléthorique de bibliothèques logiciel différentes.
+Ceci est possible notamment grâce à Composer et son principal dépôt Packagist.
+
+Mais pour manipuler toutes ces bibliothèques de projet en projet il nous faut un chef d'orchestre.
+De nombreux micro-framework endossent ce role tout en alland assez loin dans l'encadrement.
+
+Tao joue le chef d'orchestre sans aller trop loin dans le cadre de développement.
+Il est donc plus facile et rapide à prendre en mains.
+
+Néanmoins l'utilisation de Tao nécessite un minimum de connaissances.
+
+Ce tutoriel vise à présenter ces connaissances requises pour utiliser Tao.
+
+Vous pouvez considérer Tao comme un stade intermédiaire avant de passer à un micro-framework,
+c'est pour cela que je dis parfois que Tao est un proto-framework.
+
 Ce tutoriel peut être consulté sur [GitBook](http://forxer.gitbooks.io/tutoriel-tao/content/).
 
-Ce tutoriel vise à montrer ce qu’il est possible de réaliser avec Tao, de présenter les principes utilisés et les bonnes pratiques mises en œuvre.
-
-Comme c’est un tutoriel et non une documentation, beaucoup de points différents seront abordés, mais jamais très en profondeur.
-
-Cependant, dans la mesure du possible, des liens vers de plus amples informations seront fournis.
-
-_En ce qui concerne ces liens vers de la documentation complémentaire :_
->Nous vous conseillons de ne pas cliquer dessus à la première lecture. Suivez l’intégralité du tutoriel une première fois sans suivre ces liens, puis lors d’une seconde lecture, approfondissez vos connaissances en cliquant dessus.
-
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/text-html.png) sera l’icône pour indiquer ces liens vers de la documentation complémentaire
-
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/emblem-important.png) sera l’icône pour indiquer un point important du tutoriel qu’il faudra bien retenir
-
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) sera l’icône pour indiquer une astuce, un point de connaissance utile
-
-Pour démarrer ce tutoriel vous devez avoir à disposition sur votre machine :
-
-* un serveur web
-* PHP >= 5.4
-* une base de données
-* composer
-* bower
+Vous pouvez contribuer pour améliorer cette documentation sur [GitHub](https://github.com/forxer/tao-tuto).
 
 

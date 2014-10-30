@@ -1,4 +1,4 @@
-# Summary
+# Table des matières
 
 * [Introduction](README.md)
 * [Table des matières](book/table_des_matieres/README.md)

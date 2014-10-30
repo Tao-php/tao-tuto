@@ -6,10 +6,10 @@
 		},
 
 		"sharing": {
-			"google": null,
-			"facebook": null,
-			"twitter": null,
-			"weibo": null,
+			"google": false,
+			"facebook": false,
+			"twitter": false,
+			"weibo": false,
 			"all": false
 		}
 	}
