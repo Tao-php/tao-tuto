@@ -1,6 +1,7 @@
 <?php
 namespace Application;
 
+use Application\Provider\FinderServiceProvider;
 use Symfony\Component\Templating\Asset\PathPackage;
 use Tao\Application as TaoApplication;
 
@@ -9,6 +10,8 @@ class Application extends TaoApplication
 	public function __construct($loader, array $config = [], array $classesMap = [])
 	{
 		parent::__construct($loader, $config, __DIR__, $classesMap);
+
+		$this->register(new FinderServiceProvider());
 
 		$this['session']->start();
 

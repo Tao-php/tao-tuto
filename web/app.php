@@ -8,7 +8,9 @@ $loader = require __DIR__ . '/../vendor/autoload.php';
 $config = require __DIR__ . '/../Application/Config/dev.php';
 
 # Initialisation de l'application
-$app = new Application\Application($loader, $config);
+$app = new Application\Application($loader, $config, [
+	'finder' => 'Symfony\Component\Finder\Finder'
+]);
 
 # Exécution de l'application
 $app->run();
