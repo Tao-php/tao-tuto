@@ -1,6 +1,8 @@
 <?php
 namespace Application\Controllers;
 
+use Respect\Validation\Validator as v;
+
 class Contact extends BaseController
 {
 	protected $email;
@@ -25,7 +27,7 @@ class Contact extends BaseController
 		if (empty($this->email)) {
 			$this->app['instantMessages']->error('Vous devez saisir une adresse email.');
 		}
-		elseif (!filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+		elseif (!v::email()->validate($this->email)) {
 			$this->app['instantMessages']->error('Vous devez saisir une adresse email valide.');
 		}
 

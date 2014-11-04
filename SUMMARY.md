@@ -10,6 +10,6 @@
 * [Quelques améliorations](book/quelques_ameliorations/README.md)
 * [Message in the bottle](book/message_in_the_bottle/README.md)
 * [Contact](book/contact/README.md)
-* [Utiliser des composants externes](utiliser_des_composants_externes/README.md)
+* [Utiliser des composants externes](book/utiliser_des_composants_externes/README.md)
 * [Beautification](book/beautification/README.md)
 * [Conteneur d'injection de dépendances](book/conteneur_dinjection_de_dependances/README.md)
