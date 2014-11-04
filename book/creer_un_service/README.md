@@ -48,9 +48,9 @@ Voilà, cela fonctionne parfaitement.
 
 Notre exemple précédent est simple et efficace. Mais vous pourriez avoir besoin du finder dans bien des endroits de votre projet. Aussi, l'initialisation du finder est simple, mais pour d'autres objets cela pourrait prendre bien plus de ligne de code, qu'il faudrait recopier à chaque fois qu'on en as besoin.
 
-Mais attendez. Nous avons vu l'injection de dépendance et la création de fournisseur de service. Alors allons-y créons un service.
+Mais attendez. Nous avons vu l'injection de dépendance et la création de fournisseur de service dans la partie précédente. Alors allons-y, créons un fournisseur de service.
 
-Pour cela nous allons ajouter un répertoire "Provider" à notre application et y créer un fichier `FinderServiceProvider.php` :
+Pour cela nous allons ajouter un répertoire "Provider" à notre application et y créer un fichier `/Application/Provider/FinderServiceProvider.php` :
 
 ```php
 <?php
@@ -71,6 +71,24 @@ class FinderServiceProvider implements ServiceProviderInterface
 }
 ```
 
+Ensuite, on enregistre ce service dans le constructeur de l'application `/Application/Application.php` :
+
+```php
+//...
+
+use Application\Provider\FinderServiceProvider;
+
+//...
+
+	public function __construct($loader, array $config = [], array $classesMap = [])
+	{
+		parent::__construct($loader, $config, __DIR__, $classesMap);
+
+		$this->register(new FinderServiceProvider());
+
+//...
+```
+
 Et voilà, maintenant nous pouvons appeller très facilement le finder dans notre application `$app['finder]` ; l'exemple devient :
 
 ```php
@@ -80,7 +98,7 @@ $cssFiles = $app['finder']->files()->in(__DIR__)->name('*.css');
 
 ```
 
-Néanmoins il demeure un problème, si je fait de nouveaux appel à `$app['finder]`, de part l'implémentation de Pimple je retrouverais la même instance du finder. Ce n'est pas ce que je veux, mais encore une fois nous en avons parlé, le conteneur fournis une méthode factory() pour nous aider à cela. Modifions donc le fichier `FinderServiceProvider.php` :
+Néanmoins il demeure un problème, si je fait de nouveaux appel à `$app['finder]`, de par l'implémentation de Pimple je retrouverais la même instance du finder. Ce n'est pas ce que je veux pour le Finder. Pour le finder je veux une nouvelle instance à chaque appel de `$app['finder]`. Mais encore une fois nous en avons parlé, Pimple fournit une méthode `factory()` pour nous aider à cela. Modifions donc le fichier `FinderServiceProvider.php` :
 
 ```php
 <?php
@@ -107,13 +125,13 @@ Et voilà le tour est joué. Pour aller au bout de l'injection de dépendance il
 
 Nous avons vu que Tao fonctionne avec un fichier de configuration par défaut, le fichier  `vendor/forxer/tao/src/Tao/Configuration.php`
 
-Il existe un second fichier de "configuration" par défaut, celui du mapping de classe.
+Il existe un second fichier de "configuration" par défaut, celui du *mapping de classe*.
 
-Ce fichier dit par exemple que la classe 'logger' dans l'application sera 'Monolog\Logger'
+Ce fichier dit, par exemple, que la classe 'logger' dans l'application sera 'Monolog\Logger'
 
 Aussi, si vous retournez voir votre fichier `/Application/Application.php`, vous remarquerez un troisième argument au construteur : `$classesMap`.
 
-En effet, comme nous avons personnalisé la configuration en passant un tableau au deuxième argument du constructeur, ici nous pouvons passer un tableau au troisième argument du constructeur pour modifier les noms des classes à instancier.
+En effet, comme nous avons personnalisé la configuration en passant un tableau au deuxième argument du constructeur, ici nous pouvons passer au troisième argument du constructeur un tableau pour modifier les noms des classes à instancier.
 
 Pour notre exemple de service nous voulons ajouter une ligne au "classesMap" de façon à pouvoir changer de classe de Finder facilement.
 
@@ -152,7 +170,7 @@ class FinderServiceProvider implements ServiceProviderInterface
 
 Voilà, maintenant vous pouvez très facilement changer de classe Finder.
 
-![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) En fait nous avopns trouvé le FinderServiceProvider tellement pratique qu'il a été inclus dans la version 0.8.1 de Tao.
+![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/dialog-information.png) En fait, inutile d'implémenter dans votre application ce service FinderServiceProvider, nous l'avons trouvé tellement pratique qu'il a été inclus dans la version 0.8.1 de Tao.
 
 
 ## Conclusion
