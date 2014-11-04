@@ -6,9 +6,9 @@ use Tao\Application as TaoApplication;
 
 class Application extends TaoApplication
 {
-	public function __construct($loader, array $config = [], array $classMap = [])
+	public function __construct($loader, array $config = [], array $classesMap = [])
 	{
-		parent::__construct($loader, $config, __DIR__, $classMap);
+		parent::__construct($loader, $config, __DIR__, $classesMap);
 
 		$this['session']->start();
 

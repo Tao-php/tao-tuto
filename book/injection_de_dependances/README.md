@@ -1,4 +1,8 @@
-# Conteneur d'injection de dépendances
+# Injection de dépendances et conteneur d'injection de dépendances
+
+Dans cette partie nous allons voir par l'exemple les concepts d'*injection de dépendances* et de *conteneur d'injection de dépendances*. Ensuite nous regarderons l'implémentation de ces concepts par Pimple qui est le conteneur d'injection de dépendances utilisé par Tao.
+
+Attention, vous vous attaquez à un gros pavé, vous devriez peut-être aller chercher un café...
 
 ## Injection de Dépendances
 
@@ -33,23 +37,23 @@ Comme nous utilisons la programmation orientée objet, nous avons une classe PHP
 ```php
 class SessionStorage
 {
-  function __construct($cookieName = 'PHP_SESS_ID')
-  {
-    session_name($cookieName);
-    session_start();
-  }
+function __construct($cookieName = 'PHP_SESS_ID')
+{
+	session_name($cookieName);
+	session_start();
+}
 
-  function set($key, $value)
-  {
-    $_SESSION[$key] = $value;
-  }
+function set($key, $value)
+{
+	$_SESSION[$key] = $value;
+}
 
-  function get($key)
-  {
-    return $_SESSION[$key];
-  }
+function get($key)
+{
+	return $_SESSION[$key];
+}
 
-  // ...
+// ...
 }
 ```
 
@@ -58,24 +62,24 @@ Et une classe utilissateur :
 ```php
 class User
 {
-  protected $storage;
+protected $storage;
 
-  function __construct()
-  {
-    $this->storage = new SessionStorage();
-  }
+function __construct()
+{
+	$this->storage = new SessionStorage();
+}
 
-  function setLanguage($language)
-  {
-    $this->storage->set('language', $language);
-  }
+function setLanguage($language)
+{
+	$this->storage->set('language', $language);
+}
 
-  function getLanguage()
-  {
-    return $this->storage->get('language');
-  }
+function getLanguage()
+{
+	return $this->storage->get('language');
+}
 
-  // ...
+// ...
 }
 ```
 
@@ -94,12 +98,12 @@ Tous va pour le mieux jusqu'à ce que vous ayez besoin de flexibilité. Par exem
 ```php
 class User
 {
-  function __construct()
-  {
-    $this->storage = new SessionStorage('SESSION_ID');
-  }
+function __construct()
+{
+	$this->storage = new SessionStorage('SESSION_ID');
+}
 
-  // ...
+// ...
 }
 ```
 
@@ -110,12 +114,12 @@ Coder en dur le nom de session dans la classe `User` ne résout pas vraiment le 
 ```php
 class User
 {
-  function __construct()
-  {
-    $this->storage = new SessionStorage(STORAGE_SESSION_NAME);
-  }
+function __construct()
+{
+	$this->storage = new SessionStorage(STORAGE_SESSION_NAME);
+}
 
-  // ...
+// ...
 }
 
 define('STORAGE_SESSION_NAME', 'SESSION_ID');
@@ -128,12 +132,12 @@ Utiliser une constante est également une mauvaise idée car la classe `User` d�
 ```php
 class User
 {
-  function __construct($sessionName)
-  {
-    $this->storage = new SessionStorage($sessionName);
-  }
+function __construct($sessionName)
+{
+	$this->storage = new SessionStorage($sessionName);
+}
 
-  // ...
+// ...
 }
 
 $user = new User('SESSION_ID');
@@ -150,12 +154,12 @@ C'est là qu'interviens l'injection de dépendance. Au lieu de créer l'objet Se
 ```php
 class User
 {
-  function __construct($storage)
-  {
-    $this->storage = $storage;
-  }
+function __construct($storage)
+{
+	$this->storage = $storage;
+}
 
-  // ...
+// ...
 }
 ```
 
@@ -178,12 +182,12 @@ L'injection de dépendance ne se limite pas à l'injection par le constructeur
 ```php
 class User
 {
-  function __construct($storage)
-  {
-    $this->storage = $storage;
-  }
+function __construct($storage)
+{
+	$this->storage = $storage;
+}
 
-  // ...
+// ...
 }
 ```
 
@@ -192,12 +196,12 @@ class User
 ```php
 class User
 {
-  function setSessionStorage($storage)
-  {
-    $this->storage = $storage;
-  }
+function setSessionStorage($storage)
+{
+	$this->storage = $storage;
+}
 
-  // ...
+// ...
 }
 ```
 
@@ -206,7 +210,7 @@ class User
 ```php
 class User
 {
-  public $sessionStorage;
+public $sessionStorage;
 }
 
 $user->sessionStorage = $storage;
@@ -225,15 +229,15 @@ Un conteneur d'injection de dépendances est un objet qui sait comment instancie
 ```php
 class Container
 {
-    public function getSessionStorage()
-    {
-        return new SessionStorage('SESSION_ID');
-    }
+	public function getSessionStorage()
+	{
+		return new SessionStorage('SESSION_ID');
+	}
 
-    public function getUser()
-    {
-        return new User($this->getSessionStorage());
-    }
+	public function getUser()
+	{
+		return new User($this->getSessionStorage());
+	}
 }
 ```
 
@@ -249,22 +253,22 @@ Mais le conteneur lui-même à maintenant tout de coder en dur. Nous devons alle
 ```php
 class Container
 {
-    protected $parameters;
+	protected $parameters;
 
-    public function __construct(array $parameters = [])
-    {
-        $this->parameters = $parameters;
-    }
+	public function __construct(array $parameters = [])
+	{
+		$this->parameters = $parameters;
+	}
 
-    public function getSessionStorage()
-    {
-        return new SessionStorage($this->parameters['session.cookie.name']);
-    }
+	public function getSessionStorage()
+	{
+		return new SessionStorage($this->parameters['session.cookie.name']);
+	}
 
-    public function getUser()
-    {
-        return new User($this->getSessionStorage());
-    }
+	public function getUser()
+	{
+		return new User($this->getSessionStorage());
+	}
 }
 ```
 
@@ -272,7 +276,7 @@ Maintenant nous pouvons faire ceci :
 
 ```php
 $container = new Container([
-    'session.cookie.name' => 'SESSION_ID'
+	'session.cookie.name' => 'SESSION_ID'
 ]);
 
 $user = $container->getUser();
@@ -283,24 +287,24 @@ Et si nous voulons changer la classe SessionStorage :
 ```php
 class Container
 {
-    protected $parameters;
+	protected $parameters;
 
-    public function __construct(array $parameters = [])
-    {
-        $this->parameters = $parameters;
-    }
+	public function __construct(array $parameters = [])
+	{
+		$this->parameters = $parameters;
+	}
 
-    public function getSessionStorage()
-    {
-        $class = $this->parameters['session.storage.class'];
+	public function getSessionStorage()
+	{
+		$class = $this->parameters['session.storage.class'];
 
-        return new $class($this->parameters['session.cookie.name']);
-    }
+		return new $class($this->parameters['session.cookie.name']);
+	}
 
-    public function getUser()
-    {
-        return new User($this->getSessionStorage());
-    }
+	public function getUser()
+	{
+		return new User($this->getSessionStorage());
+	}
 }
 ```
 
@@ -308,8 +312,8 @@ Maintenant nous pouvons faire ceci :
 
 ```php
 $container = new Container([
-    'session.cookie.name' => 'SESSION_ID',
-    'session.storage.class' => 'SessionStorage'
+	'session.cookie.name' => 'SESSION_ID',
+	'session.storage.class' => 'SessionStorage'
 ]);
 
 $user = $container->getUser();
@@ -321,37 +325,37 @@ Enfin, nous ne souhaitons pas instancier les objets à chaque fois que nous fais
 ```php
 class Container
 {
-    static protected $shared = [];
-    protected $parameters;
+	static protected $shared = [];
+	protected $parameters;
 
-    public function __construct(array $parameters = [])
-    {
-        $this->parameters = $parameters;
-    }
+	public function __construct(array $parameters = [])
+	{
+		$this->parameters = $parameters;
+	}
 
-    public function getSessionStorage()
-    {
-        if (isset(self::$shared['sessionStorage'])) {
-            return self::$shared['sessionStorage'];
-        }
+	public function getSessionStorage()
+	{
+		if (isset(self::$shared['sessionStorage'])) {
+			return self::$shared['sessionStorage'];
+		}
 
-        $class = $this->parameters['session.storage.class'];
+		$class = $this->parameters['session.storage.class'];
 
-        self::$shared['sessionStorage'] =  new $class($this->parameters['session.cookie.name']);
+		self::$shared['sessionStorage'] =  new $class($this->parameters['session.cookie.name']);
 
-        return self::$shared['sessionStorage'];
-    }
+		return self::$shared['sessionStorage'];
+	}
 
-    public function getUser()
-    {
-        if (isset(self::$shared['user'])) {
-            return self::$shared['user'];
-        }
+	public function getUser()
+	{
+		if (isset(self::$shared['user'])) {
+			return self::$shared['user'];
+		}
 
-        self::$shared['user'] = new User($this->getSessionStorage());
+		self::$shared['user'] = new User($this->getSessionStorage());
 
-        return self::$shared['user']
-    }
+		return self::$shared['user']
+	}
 }
 ```
 
@@ -379,11 +383,11 @@ Dans Pimple cela peut se faire grâce aux fonctions anonymes.
 
 ```php
 $container['session_storage'] = function($c) {
-    return new SessionStorage('SESSION_ID');
+	return new SessionStorage('SESSION_ID');
 };
 
 $container['user'] = function($c) {
-    return new User($c['session_storage']);
+	return new User($c['session_storage']);
 };
 ```
 
@@ -412,11 +416,11 @@ $container['session.storage.class'] = 'SessionStorage';
 Et modifier les définitions de service :
 ```php
 $container['session_storage'] = function($c) {
-    return new $container['session.storage.class']($container['session.cookie.name']);
+	return new $container['session.storage.class']($container['session.cookie.name']);
 };
 
 $container['user'] = function($c) {
-    return new User($c['session_storage']);
+	return new User($c['session_storage']);
 };
 ```
 
@@ -433,11 +437,11 @@ $container['session.cookie.name'] = 'SESSION_ID';
 $container['session.storage.class'] = 'SessionStorage';
 
 $container['session_storage'] = function($c) {
-    return new $container['session.storage.class']($container['session.cookie.name']);
+	return new $container['session.storage.class']($container['session.cookie.name']);
 };
 
 $container['user'] = function($c) {
-    return new User($c['session_storage']);
+	return new User($c['session_storage']);
 };
 ```
 
@@ -448,12 +452,12 @@ use Pimple\Container;
 
 class SessionStorage implements Pimple\ServiceProviderInterface
 {
-    public function register(Container $container)
-    {
-        $container['session_storage'] = function() use ($container) {
-            return new $container['session.storage.class']($container['session.cookie.name']);
-        };
-    }
+	public function register(Container $container)
+	{
+		$container['session_storage'] = function() use ($container) {
+			return new $container['session.storage.class']($container['session.cookie.name']);
+		};
+	}
 }
 ```
 
@@ -464,11 +468,4 @@ $container->register(new SessionStorage());
 ```
 
 C'est ce que fait Tao pour différents services : `request`, `router`, `templating`, etc.
-
-
-
-
-
-
-
 
