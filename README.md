@@ -20,4 +20,5 @@ Ce tutoriel peut être consulté sur [GitBook](http://forxer.gitbooks.io/tutorie
 
 Vous pouvez contribuer pour améliorer cette documentation sur [GitHub](https://github.com/forxer/tao-tuto).
 
+[![Build Status](https://www.gitbook.io/button/status/book/forxer/tutoriel-tao)](https://www.gitbook.io/book/forxer/tutoriel-tao/activity)
 
