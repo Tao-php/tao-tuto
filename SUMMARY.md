@@ -10,9 +10,9 @@
 * [Quelques améliorations](book/quelques_ameliorations/README.md)
 * [Message in the bottle](book/message_in_the_bottle/README.md)
 * [Contact](book/contact/README.md)
+* [Beautification](book/beautification/README.md)
 * [Utiliser des composants externes](book/utiliser_des_composants_externes/README.md)
 * [Injection de dépendances](book/injection_de_dependances/README.md)
-* [Beautification](book/beautification/README.md)
 * [Créer un service](book/creer_un_service/README.md)
 * Base de données
 
