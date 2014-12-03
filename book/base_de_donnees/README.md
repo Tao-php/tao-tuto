@@ -6,7 +6,7 @@ Une application qui n’utilise pas de base de données, c’est rare. Nous allo
 
 Dans premier temps, nous allons créer une base de données avec une simple table.
 
-Pour ce tutoriel j’ai choisi d’utiliser une base de donnée MySQL nommée "tutotao" dans laquelle j’ai créé la table suivante :
+J’ai choisi d’utiliser une base de donnée MySQL nommée "tutotao" dans laquelle j’ai créé la table suivante :
 
 ```
 CREATE TABLE IF NOT EXISTS `posts` (
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 ```
 
-Ensuite, ouvrez le fichier de configuration `/Application/Config/prod.php` et ajoutez les paramètres suivant :
+Après avoir créé cette table, ouvrez le fichier de configuration `/Application/Config/prod.php` et ajoutez les paramètres suivant :
 
 ```php
     'database.connection' => [
@@ -33,11 +33,14 @@ Ensuite, ouvrez le fichier de configuration `/Application/Config/prod.php` et aj
     ],
 ```
 
-Évidement vous devez les personnaliser ces paramètres selon vos besoins.
+Évidement vous devez personnaliser ces paramètres selon vos besoins.
 
-Reste maintenant à ajouter la bibliothèque de gestion de base de données. Nous utiliseront Doctrine DBAL parce qu’un service est prévu dans Tao et que les paramètres de connexion sont aussi prévus pour elle.
+Reste maintenant à ajouter la bibliothèque de gestion de base de données.
+Nous utiliseront Doctrine DBAL parce qu’un service est prévu dans Tao
+et que les paramètres de connexion sont aussi prévus pour elle.
 
-Nous allons donc ré-utilisé ce que nous avons précédement vu : l’ajout d’un composant externe et l’utilisation d’un service.
+Nous allons donc ré-utiliser ce que nous avons précédement vu :
+l’ajout d’un composant externe et l’utilisation d’un nouveau service.
 
 Ajoutez au fichier `composer.json` la dépendance suivante :
 
@@ -66,7 +69,7 @@ use Tao\Provider\DatabaseServiceProvider;
 //...
 ```
 
-Vous avez maintenant à disposition le service `$app['db']``qui est une instance de connexion à la base de données.
+Vous avez maintenant à disposition le service `$app['db']` qui est une instance de connexion à la base de données.
 
 ## Utilisation simple
 
@@ -80,9 +83,9 @@ while ($row = $stmt->fetch()) {
 }
 ```
 
-Mais ce n'est pas la meilleure façon de procéder pour plusieurs raisons que vous trouverez dans la documentation de Doctrine DBAL.
+Mais ce n’est pas la meilleure façon de procéder pour plusieurs raisons que vous trouverez dans la documentation de Doctrine DBAL.
 
-Il vaux mieux utiliser les requetes préparées et les paramètres dynamiques, exemple de requete préparée :
+Il vaux mieux utiliser les requêtes préparées et les paramètres dynamiques, exemple de requête préparée :
 
 ```php
 $stmt = $app['db']->prepare('SELECT * FROM posts');
@@ -101,7 +104,7 @@ $stmt->bindValue(1, $id);
 $stmt->execute();
 ```
 
-Il est aussi possible d'utiliser des paramètres dynamiques nommés :
+Il est aussi possible d’utiliser des paramètres dynamiques nommés :
 
 ```php
 $stmt = $app['db']->prepare('SELECT * FROM posts WHERE id = :post_id');
@@ -109,8 +112,8 @@ $stmt->bindValue('post_id', $id);
 $stmt->execute();
 ```
 
-Utiliser la méthode `prepare()` est utile si vous devez utiliser le même "statement" pour plusieurs requetes,
-sinon il existe deux autres méthodes pour simplifier l'écriture :
+Utiliser la méthode `prepare()` est utile si vous devez utiliser le même "statement" pour plusieurs requêtes,
+sinon il existe deux autres méthodes pour simplifier l’écriture :
 
 - `executeQuery($sql, $params, $types)` sera utilisée pour les SELECT
 - `executeUpdate($sql, $params, $types)` sera utilisée pour les UPDATE, DELETE et INSERT
@@ -120,6 +123,8 @@ Ainsi, le dernier exemple devient :
 ```php
 $stmt = $app['db']->executeQuery('SELECT * FROM posts WHERE id = :post_id', ['post_id' => $id]);
 ```
+
+## Utilisation sympa
 
 Pour que ce soit encore plus sympa peux faire ceci :
 
@@ -183,7 +188,7 @@ Vous pouvez l'utiliser par exemple de cette façon :
 
 ```php
 $queryBuilder = $app['qb'];
-queryBuilder
+$queryBuilder
     ->select('title', 'content')
     ->from('posts')
     ->where('id = :post_id')
@@ -191,10 +196,76 @@ queryBuilder
 ;
 ```
 
-Cet outil est très puissant et utile pour construire une requete au fur et à mesure de l'execution du programme.
+Cet outil est très puissant et utile pour construire une requête au fur
+et à mesure de l'execution du programme et en fonction du contexte.
 
 Je ne vais pas détailler toutes les méthodes existantes ici, la documentation est suffisament détaillée.
 
 ![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/text-html.png)
 [Documentation du Query Builder de Doctrine DBAL](http://doctrine-dbal.readthedocs.org/en/latest/reference/query-builder.html)
 
+## Model
+
+Afin de simplifier certaines opérations, Tao propose une classe "Model" qui peut être étendue.
+
+Créons donc une classe dans `/Application/Models/Posts.php`
+
+```php
+<?php
+namespace Application\Models;
+
+use Tao\Database\Model;
+
+class Posts extends Model
+{
+    public function init()
+    {
+        $this->setTable('posts');
+
+        $this->setAlias('p');
+
+        $this->setColumns([
+            'id',
+            'title',
+            'content'
+        ]);
+
+        $this->setPrimaryKey('id');
+    }
+}
+
+```
+
+Maintenant il est possible de l’utiliser soit en l’instanciant directement,
+soit en utilisant l’utilitaire `$app->getModel('Posts')`.
+
+Après, différentes méthodes utilitaires seront alors disponibles.
+
+
+```php
+$Posts = $app->getModel('Posts');
+
+$Posts->insert([
+    'title' => $title,
+    'content' => $content
+]);
+
+$Posts->update([
+    'title' => $title,
+    'content' => $content
+], $id);
+```
+
+Aussi, il est possible d'utiliser les modèles dans le query builder étendu de Tao.
+
+```php
+$Posts = $app->getModel('Posts');
+
+$queryBuilder = $app['qb'];
+$queryBuilder
+    ->selectModel($Posts)
+    ->where('id = :post_id')
+    ->setParameter('post_id', $id)
+;
+
+```

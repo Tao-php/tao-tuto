@@ -60,3 +60,6 @@
 * [Base de données](book/base_de_donnees/README.md)
     - Préparation et configuration
     - Utilisation simple
+    - Utilisation sympa
+    - Constructeur de requêtes SQL (SQL Query Builder)
+    - Model
