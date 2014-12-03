@@ -12,7 +12,7 @@
 * [Contact](book/contact/README.md)
 * [Utiliser des composants externes](book/utiliser_des_composants_externes/README.md)
 * [Beautification](book/beautification/README.md)
+* [Créer un service](book/creer_un_service/README.md)
 * [Injection de dépendances](book/injection_de_dependances/README.md)
 * Base de données
-* [Créer un service](book/creer_un_service/README.md)
 
