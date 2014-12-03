@@ -63,3 +63,4 @@
     - Utilisation sympa
     - Constructeur de requêtes SQL (SQL Query Builder)
     - Model
+    - Conclusion

@@ -1,6 +1,6 @@
 {
 	"require" : {
-		"forxer/tao" : "0.8",
+		"forxer/tao" : "~0.8",
 		"respect/validation" : "~0.6",
 		"symfony/finder" : "~2.5"
 	},

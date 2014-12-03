@@ -199,6 +199,35 @@ $queryBuilder
 Cet outil est très puissant et utile pour construire une requête au fur
 et à mesure de l'execution du programme et en fonction du contexte.
 
+```php
+$queryBuilder = $app['qb'];
+$queryBuilder
+    ->select('title', 'content')
+    ->from('posts')
+    ->where('id = :post_id')
+    ->setParameter('post_id', $id)
+    ->orderBy('id', 'ASC')
+;
+
+if ($critere['foo'])
+{
+    $queryBuilder
+        ->AndWhere('foo = :foo')
+        ->setParameter('foo', $critere['foo'])
+        ->addOrderBy('foo', 'ASC NULLS FIRST')
+    ;
+}
+
+if ($critere['bar'])
+{
+    $queryBuilder
+        ->AndWhere('bar = :bar')
+        ->setParameter('bar', $critere['bar'])
+        ->addOrderBy('bar', 'DESC')
+    ;
+}
+```
+
 Je ne vais pas détailler toutes les méthodes existantes ici, la documentation est suffisament détaillée.
 
 ![](https://raw.githubusercontent.com/forxer/tao-tuto/master/book/assets/text-html.png)
@@ -207,6 +236,11 @@ Je ne vais pas détailler toutes les méthodes existantes ici, la documentation 
 ## Model
 
 Afin de simplifier certaines opérations, Tao propose une classe "Model" qui peut être étendue.
+
+Malheureusement ce système a été développé à la hâte et souffre d'importants défauts. Par exemple
+l'impossibilité de définir une clé primaire sur deux champs (oooouuuuuh).
+
+Mais survolons quand même rapidement ce qu'il est possible de faire.
 
 Créons donc une classe dans `/Application/Models/Posts.php`
 
@@ -239,7 +273,7 @@ class Posts extends Model
 Maintenant il est possible de l’utiliser soit en l’instanciant directement,
 soit en utilisant l’utilitaire `$app->getModel('Posts')`.
 
-Après, différentes méthodes utilitaires seront alors disponibles.
+Différentes méthodes utilitaires seront alors disponibles.
 
 
 ```php
@@ -254,6 +288,10 @@ $Posts->update([
     'title' => $title,
     'content' => $content
 ], $id);
+
+if ($Posts->has($id)) {
+    $Posts->delete($id);
+}
 ```
 
 Aussi, il est possible d'utiliser les modèles dans le query builder étendu de Tao.
@@ -268,4 +306,16 @@ $queryBuilder
     ->setParameter('post_id', $id)
 ;
 
+$pager = $queryBuilder->getPager($Posts, $iMaxPerPage, $iCurrentPage);
+
 ```
+
+## Conclusion
+
+Nous avons survolé les trois possibilités pour communiquer avec une base de données.
+- DBAL
+- QueryBuilder
+- Model
+
+Les plus sûrs sont résolument les deux premières, la dernière peut offrir de la souplesse
+et de la simplicité, mais induit parfois des limitations.
