@@ -58,4 +58,5 @@
     - Le mapping de classes
     - Conclusion
 * [Base de données](book/base_de_donnees/README.md)
-
+    - Préparation et configuration
+    - Utilisation simple
