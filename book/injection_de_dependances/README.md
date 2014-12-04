@@ -16,11 +16,13 @@ rien à voir avec les dépendances gérées par composer par exemple.
 L'injection de dépendances est un des [design pattern](http://fr.wikipedia.org/wiki/Patron_de_conception)
 les plus simple. Mais il est aussi l'un des plus difficile à expliquer clairement.
 
+Vous l'avez très probablement déjà utilisé sans le savoir. A moins que vous sachiez déjà ce que c'est.
+
 Selon Wikipedia :
 
 >L'injection de dépendances (Dependency Injection) est un mécanisme qui permet d'implémenter le principe de l'inversion de contrôle. Il consiste à créer dynamiquement (injecter) les dépendances entre les différentes classes en s'appuyant sur une description (fichier de configuration ou métadonnées) ou de manière programmatique. Ainsi les dépendances entre composants logiciels ne sont plus exprimées dans le code de manière statique mais déterminées dynamiquement à l'exécution.
 
-Je sais pas vous, mais moi ça me fait un peu mal à la tête.
+Je ne sais pas vous, mais moi ça me fait un peu mal à la tête.
 
 Nous allons reprendre l'exemple concret le plus souvent utilisé pour présenter
 l'injection de dépendance dans un projet web en PHP.
@@ -69,7 +71,7 @@ class SessionStorage
 }
 ```
 
-Et une classe utilissateur :
+Et une classe utilisateur :
 
 ```php
 class User
@@ -120,8 +122,8 @@ class User
 }
 ```
 
-Coder en dur le nom de session dans la classe `User` ne résout pas vraiment le problème
-car vous ne pouvez pas changer d'avis facilement plus tard sans modifier de nouveau la classe Utilisateur.
+Cela ne résout pas vraiment le problème car vous ne pouvez pas changer d'avis
+facilement plus tard sans modifier de nouveau la classe Utilisateur.
 
 - Définir une constante en dehors de la classe `User` :
 
@@ -139,8 +141,7 @@ class User
 define('STORAGE_SESSION_NAME', 'SESSION_ID');
 ```
 
-Utiliser une constante est également une mauvaise idée car la classe `User`
-dépend désormais de la définition d'une constante.
+C'est également une mauvaise idée car la classe `User` dépend maintenant de la définition d'une constante.
 
 - Ajouter le nom de session comme un argument du constructeur de la classe `User` :
 
@@ -158,18 +159,18 @@ class User
 $user = new User('SESSION_ID');
 ```
 
-Passer le nom de session comme argument est probablement la meilleure solution,
-mais c'est toujours pas l'idéal. Cela encombre les arguments du constructeur
-de la classe `User` avec des choses qui ne sont pas pertinentes à l'objet lui-même.
+C'est probablement la meilleure solution, mais ce n'est toujours pas l'idéal.
+Cela encombre les arguments du constructeur de la classe `User` avec des choses
+qui ne sont pas liées à l'objet lui-même.
 
-Mais il ya encore un autre problème qui ne peut être résolu facilement :
+Mais il y a encore un autre problème qui ne peut être résolu facilement :
 comment puis-je changer la classe `SessionStorage` ?
 
 C'est impossible avec l'implémentation actuelle, sauf si vous modifiez encore la classe `User`.
 
 C'est là qu'interviens l'injection de dépendance.
-Au lieu de créer l'objet SessionStorage l'intérieur de la classe `User`,
-nous allons **injecter l'objet SessionStorage dans l'objet
+Au lieu de créer l'objet SessionStorage à l'intérieur de la classe `User`,
+nous allons **injecter l'objet `SessionStorage` dans l'objet
 `User`** en le passant comme argument du constructeur :
 
 ```php
@@ -184,19 +185,22 @@ class User
 }
 ```
 
-Voilà, l'injection de dépendance c'est ça. Rien de plus !
+Puis nous créons les instances de la façon suivante :
 
 ```php
 $sessionStorage = new SessionStorage('SESSION_ID');
 $user = new User($sessionStorage);
 ```
 
-Maintenant, la configuration de l'objet de SessionStorage est très simple,
-et le remplacement de la classe SessionStorage est également très facile.
+**Voilà, l'injection de dépendance c'est ça. Rien de plus.**
 
-Et tout est possible sans changer la classe `User` tout ceci grâce à une meilleure séparation des problèmes.
+Maintenant, la configuration de l'objet de `SessionStorage` est simple,
+et le remplacement de la classe `SessionStorage` est très facile.
 
-L'injection de dépendance ne se limite pas à l'injection par le constructeur :
+Surtout, cela est possible sans changer la classe `User`
+tout ceci grâce à une meilleure séparation des problèmes.
+
+Notez que l'injection de dépendance ne se limite pas à l'injection par le constructeur :
 
 - Injection par le constructeur :
 
@@ -245,13 +249,13 @@ comme un objet de cache par exemple.
 ## Conteneur d'injection de dépendances
 
 La plupart du temps, vous n'avez pas besoin de conteneur d'injection de dépendances pour bénéficier
-des avantages de l'injection de dépendance.
+des avantages de celle-ci.
 
 Mais quand le projet commence à avoir beaucoup d'objets cela peut rendre service.
 
-Un conteneur d'injection de dépendances est un objet qui sait comment instancier et configurer des objets.
-Et pour être en mesure de faire son travail, il doit connaître les arguments des constructeurs
-et les relations entre les objets.
+> Un conteneur d'injection de dépendances est un objet qui sait comment instancier et configurer des objets. Et pour être en mesure de faire son travail, il doit connaître les arguments des constructeurs et les relations entre les objets.
+
+Allons-y, créons un conteneur :
 
 ```php
 class Container
@@ -311,7 +315,7 @@ $container = new Container([
 $user = $container->getUser();
 ```
 
-Et si nous voulons changer la classe SessionStorage :
+Et si nous voulons changer la classe `SessionStorage` :
 
 ```php
 class Container
@@ -402,7 +406,7 @@ Dans Tao nous utilisons Pimple.
 
 Pimple est un conteneur d'injection de dépendances pour PHP 5.3 ;
 il est au coeur de votre application Tao puisque votre classe `Application/Application`
-hérite de Pimple (en fait elle hérite de `Tao/Application` qui elle hérite de Pimple).
+hérite de Pimple (en fait elle hérite de `Tao/Application`, qui elle, hérite de Pimple).
 
 Mais reprenons notre précédent exemple en utilisant Pimple.
 Dans un premier temps il nous faut une instance du conteneur :
@@ -413,7 +417,7 @@ use Pimple\Container;
 $container = new Container();
 ```
 
-Maintenant nous devons définir des services.
+Maintenant nous devons définir _des services_.
 
 Dans Pimple cela peut se faire grâce aux fonctions anonymes.
 
@@ -489,8 +493,9 @@ en implémentant `Pimple\ServiceProviderInterface` :
 
 ```php
 use Pimple\Container;
+use Pimple\ServiceProviderInterface;
 
-class SessionStorage implements Pimple\ServiceProviderInterface
+class SessionStorage implements ServiceProviderInterface
 {
     public function register(Container $container)
     {
@@ -507,5 +512,8 @@ Ensuite, il faut enregistrer le provider dans le conteneur :
 $container->register(new SessionStorage());
 ```
 
-C'est ce que fait Tao pour différents services : `request`, `router`, `templating`, etc.
+Et voilà, vous pouvez ré-utiliser très facilement les services que vous avez définit pour les différentes
+bibliothèque que vous utilisez régulièrement.
+
+C'est exactement ce que fait Tao pour différents services : `request`, `router`, `templating`, etc.
 
