@@ -71,5 +71,8 @@ Ensuite, créez un fichier vue `Application/Views/Install.php`
 Enfin, ajoutez un élément au menu dans `/Application/Views/Common/Navbar.php`
 
 ```html
+                <li<?php if ($app['request']->attributes->get('_route') == 'install') : ?> class="active"<?php endif ?>><a href="<?php echo $view['router']->generate('install') ?>"><i class="fa fa-database fa-fw"></i>&nbsp;Installation</a></li>
 
 ```
+
+**... à terminer ...**
