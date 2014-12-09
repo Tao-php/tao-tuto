@@ -46,7 +46,7 @@ Ajoutez au fichier `composer.json` la dépendance suivante :
 
 ```json
     ...
-        "doctrine/dbal" : "~2.4",
+        "doctrine/dbal" : "~2.5",
     ...
 ```
 
@@ -126,7 +126,7 @@ $stmt = $app['db']->executeQuery('SELECT * FROM posts WHERE id = :post_id', ['po
 
 ## Utilisation sympa
 
-Pour que ce soit encore plus sympa peux faire ceci :
+Pour que ce soit encore plus sympa, on peux écrire ceci :
 
 ```php
 $posts = $app['db']->fetchAll('SELECT * FROM posts');
@@ -136,7 +136,7 @@ foreach ($posts as $post) {
 }
 ```
 
-Ou bien encore ceci :
+Ou bien encore cela :
 
 ```php
 $post = $app['db']->fetchAssoc('SELECT * FROM posts WHERE id = :post_id', ['post_id' => $id]);
