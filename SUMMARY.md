@@ -15,5 +15,5 @@
 * [Injection de dépendances](book/injection_de_dependances/README.md)
 * [Créer un service](book/creer_un_service/README.md)
 * [Base de données](book/base_de_donnees/README.md)
-* [Blogy](book/blogy/README.md)
+* [Blogy - mise en place](book/blogy-1/README.md)
 
