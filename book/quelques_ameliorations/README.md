@@ -119,7 +119,7 @@ Enfin, créez un fichier vue `Application/Views/Home.php`
 ```html
 <?php $view->extend('Layout') ?>
 
-<h1>Bienvenue !</h1>
+<h1 class="page-header">Bienvenue !</h1>
 ```
 
 Voilà, maintenant, au lieu d’une erreur 404 nous avons une page d’accueil.
