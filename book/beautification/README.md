@@ -169,7 +169,7 @@ Nous allons donc commencer par créer un fichier `bower.json` dans lequel nous a
 {
 	"name": "tao-tuto",
 	"dependencies": {
-		"bootstrap" : "3.2.*",
+		"bootstrap" : "3.3.*",
 		"jquery" : "1.*"
 	}
 }
