@@ -25,26 +25,46 @@ install_process:
     _method:  POST
 ```
 
-Créez un fichier de contrôleur correspondant `Application/Controllers/Home.php`
+Créez un fichier de contrôleur correspondant `Application/Controllers/Install.php`
 
 ```php
 <?php
 namespace Application\Controllers;
 
-class Home extends BaseController
+class Install extends BaseController
 {
-    public function show()
+    public function form()
     {
-        return $this->render('Home');
+        return $this->render('Install');
+    }
+
+    public function process()
+    {
+
+
+        $this->app['flashMessages']->success('La base de données à été modifiée.');
+
+        return $this->redirectToRoute('install');
     }
 }
+
 ```
 
-Enfin, créez un fichier vue `Application/Views/Home.php`
+Enfin, créez un fichier vue `Application/Views/Install.php`
 
 ```html
 <?php $view->extend('Layout') ?>
 
-<h1>Bienvenue !</h1>
+<?php $view['slots']->set('title', 'Installation / Mise à jour') ?>
+
+<h1 class="page-header">Installation / Mise à jour</h1>
+
+<form action="<?php echo $view['router']->generate('install_process') ?>" class="form" method="post" role="form">
+
+
+    <button type="submit" class="btn btn-primary">installer / mettre à jour</button>
+
+</form>
+
 ```
 
