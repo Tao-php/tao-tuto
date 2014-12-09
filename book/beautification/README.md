@@ -339,6 +339,8 @@ Maintenant, et pour finir nous allons modifier le templates du formulaire de con
 
 <?php $view['slots']->set('title', 'Contact') ?>
 
+<h1 class="page-header">Contact</h1>
+
 <form action="<?php echo $view['router']->generate('contact_process') ?>" class="form-horizontal" method="post" role="form">
 
 	<div class="form-group">
@@ -373,7 +375,51 @@ Maintenant, et pour finir nous allons modifier le templates du formulaire de con
 </form>
 ```
 
-Ici nous avons utilisé le markup de bootstrap et saupoudré de HTML5. Bon, voilà c'était pour le fun...
+Ici nous avons utilisé le markup de bootstrap et saupoudré de HTML5.
+
+Reste les messages à mettre en forme. Nous allons modifier le fichier `/Application/Views/Common/Messages.php` de façon à factoriser la partie "affichage d'un message" :
+
+```php
+
+    <?php # affichage des éventuels messages d'erreurs
+    if ($app['messages']->hasError()) :
+        echo $view->render('Common/message', [
+            'type'        => 'danger',
+            'messages'    => $app['messages']->getError()
+        ]);
+    endif; ?>
+
+    <?php # affichage des éventuels messages d'avertissements
+    if ($app['messages']->hasWarning()) :
+        echo $view->render('Common/message', [
+            'type'        => 'warning',
+            'messages'    => $app['messages']->getWarning()
+        ]);
+    endif; ?>
+
+    <?php # affichage des éventuels messages de confirmation
+    if ($app['messages']->hasSuccess()) :
+        echo $view->render('Common/message', [
+            'type'        => 'success',
+            'messages'    => $app['messages']->getSuccess()
+        ]);
+    endif; ?>
+
+    <?php # affichage des éventuels messages d'information
+    if ($app['messages']->hasInfo()) :
+        echo $view->render('Common/message', [
+            'type'        => 'info',
+            'messages'    => $app['messages']->getInfo()
+        ]);
+    endif; ?>
+
+```
+
+Nous pouvons voir que pour chaque type de message le rendu d'un même template est réalisé en lui passant des variables différentes.
+
+Créons donc le fichier `/Application/Views/Common/Message.php`
+
+Bon, voilà c'était pour le fun...
 
 Bootstrap fournis une très grande quantité de classes CSS, de composants et de plugins JS. A vous de piocher dedans selon vos besoins.
 
