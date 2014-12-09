@@ -50,7 +50,7 @@ class Install extends BaseController
 
 ```
 
-Enfin, créez un fichier vue `Application/Views/Install.php`
+Ensuite, créez un fichier vue `Application/Views/Install.php`
 
 ```html
 <?php $view->extend('Layout') ?>
@@ -68,3 +68,8 @@ Enfin, créez un fichier vue `Application/Views/Install.php`
 
 ```
 
+Enfin, ajoutez un élément au menu dans `/Application/Views/Common/Navbar.php`
+
+```html
+
+```
