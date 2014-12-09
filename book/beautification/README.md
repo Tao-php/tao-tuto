@@ -216,7 +216,7 @@ Pour la prise en charge des éléments HTML5 et les media queries par Internet E
 {
 	"name": "tao-tuto",
 	"dependencies": {
-		"bootstrap" : "3.2.*",
+		"bootstrap" : "3.3.*",
 		"html5shiv" : "3.7.*",
 		"jquery" : "1.*",
 		"respond" : "1.4.*"
@@ -308,7 +308,7 @@ Ici nous avons ajouté le rendu de la vue `Common/Navbar` et nous avons encadré
 Créons le fichier `/Application/Views/Common/Navbar.php` :
 
 ```html
-<div class="navbar navbar-inverse" role="navigation">
+<div class="navbar navbar-inverse navbar-static-top" role="navigation">
 	<div class="container">
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
