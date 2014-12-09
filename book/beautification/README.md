@@ -419,6 +419,28 @@ Nous pouvons voir que pour chaque type de message le rendu d'un même template e
 
 Créons donc le fichier `/Application/Views/Common/Message.php`
 
+```html
+<div class="row">
+    <div class="col-md-6 col-md-offset-3 alert alert-<?php echo $type ?> alert-dismissible fade in" role="alert">
+        <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Fermer</span></button>
+        <?php if (count($messages) > 1) : ?>
+        <ul>
+            <?php foreach ($messages as $message) : ?>
+            <li><?php echo $message ?></li>
+            <?php endforeach; ?>
+        </ul>
+        <?php else : ?>
+        <p>
+            <?php foreach ($messages as $message) : ?>
+                <?php echo $message ?>
+            <?php endforeach; ?>
+        </p>
+        <?php endif ?>
+    </div>
+</div>
+```
+Si vous essayez d'envoyer le formulaire de contact, vous devriez avoir une jolie boite de message.
+
 Bon, voilà c'était pour le fun...
 
 Bootstrap fournis une très grande quantité de classes CSS, de composants et de plugins JS. A vous de piocher dedans selon vos besoins.
