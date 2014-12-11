@@ -1,3 +1,3 @@
 <?php $view->extend('Layout') ?>
 
-<h1>Bienvenue !</h1>
+<h1 class="page-header">Bienvenue !</h1>

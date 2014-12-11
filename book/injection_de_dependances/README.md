@@ -457,7 +457,7 @@ $container['session.storage.class'] = 'SessionStorage';
 Et modifier les définitions de service :
 ```php
 $container['session_storage'] = function($c) {
-    return new $container['session.storage.class']($container['session.cookie.name']);
+    return new $c['session.storage.class']($c['session.cookie.name']);
 };
 
 $container['user'] = function($c) {
@@ -478,7 +478,7 @@ $container['session.cookie.name'] = 'SESSION_ID';
 $container['session.storage.class'] = 'SessionStorage';
 
 $container['session_storage'] = function($c) {
-    return new $container['session.storage.class']($container['session.cookie.name']);
+    return new $c['session.storage.class']($c['session.cookie.name']);
 };
 
 $container['user'] = function($c) {

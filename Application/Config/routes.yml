@@ -23,4 +23,16 @@ contact_process:
   requirements:
     _method:  POST
 
-    
+install:
+  path: /install
+  defaults:
+    _controller: 'Install::form'
+  requirements:
+    _method:  GET
+
+install_process:
+  path: /install
+  defaults:
+    _controller: 'Install::process'
+  requirements:
+    _method:  POST
