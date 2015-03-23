@@ -1,8 +1,8 @@
 # Summary
 
 * [Introduction](README.md)
-* [Table des matières](table_des_matieres/README.md)
-* [Avant-propos](avant_propos/README.md)
+* [Table des matières](book/table_des_matieres/README.md)
+* [Avant-propos](/book/avant_propos/README.md)
 * [Mise en place](mise_en_place/README.md)
     - Téléchargement des sources
     - Arborescence
