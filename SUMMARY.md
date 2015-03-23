@@ -4,10 +4,10 @@
 * [Table des matières](SUMMARY.md)
 * [Avant-propos](book/avant_propos/README.md)
 * [Mise en place](book/mise_en_place/README.md)
-    - Téléchargement des sources
-    - Arborescence
-    - Autoload
-    - Conclusion
+    - [Téléchargement des sources](book/mise_en_place/README.md)
+    - [Arborescence](book/mise_en_place/README.md)
+    - [Autoload](book/mise_en_place/README.md)
+    - [Conclusion](book/mise_en_place/README.md)
 * [Hello World!](book/hello_world/README.md)
 * [Hello Name!](book/hello_name/README.md)
 * [Configuration](book/configuration/README.md)
