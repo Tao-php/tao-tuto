@@ -1,7 +1,7 @@
 # Summary
 
 * [Introduction](README.md)
-* [Table des matières](SUMMARY/README.md)
+* [Table des matières](SUMMARY.md)
 * [Avant-propos](book/avant_propos/README.md)
 * [Mise en place](book/mise_en_place/README.md)
     - Téléchargement des sources
