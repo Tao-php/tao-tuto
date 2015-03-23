@@ -1,16 +1,16 @@
 {
-	"links": {
+    "links": {
 
-		"sidebar": {
-			"Tao on Github": "https://github.com/forxer/tao-tuto"
-		},
+        "sidebar": {
+            "Tao on Github": "https://github.com/Tao-php"
+        },
 
-		"sharing": {
-			"google": false,
-			"facebook": false,
-			"twitter": false,
-			"weibo": false,
-			"all": false
-		}
-	}
+        "sharing": {
+            "google": false,
+            "facebook": false,
+            "twitter": false,
+            "weibo": false,
+            "all": false
+        }
+    }
 }
