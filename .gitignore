@@ -1,7 +1,4 @@
 
-# Book build output
-_book
-
 # application cache
 /Application/Storage/Cache/**
 !/Application/Storage/Cache/*/.gitkeep
