@@ -18,7 +18,5 @@ c’est pour cela que je dis parfois que Tao est un proto-framework.
 
 Ce tutoriel peut être consulté sur [GitBook](http://forxer.gitbooks.io/tutoriel-tao/content/).
 
-Vous pouvez contribuer pour améliorer cette documentation sur [GitHub](https://github.com/forxer/tao-tuto).
-
-[![Build Status](https://www.gitbook.io/button/status/book/forxer/tutoriel-tao)](https://www.gitbook.io/book/forxer/tutoriel-tao/activity)
+Vous pouvez contribuer pour améliorer cette documentation sur [GitHub](https://github.com/Tao-php/tao).
 
